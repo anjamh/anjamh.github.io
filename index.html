@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+
+  <!-- preload background -->
+<!-- preload background -->
+<link rel="preload" as="image" href="images/bg-desktop.jpeg" media="(min-aspect-ratio: 0.8)">
+<link rel="preload" as="image" href="images/bg-mobile-portrait.jpg" media="(max-aspect-ratio: 0.8)">
+<link rel="preload" as="image" href="images/bg-tablet-portrait.png" media="(max-aspect-ratio: 0.8) and (min-width: 540px)">
+<link rel="preload" as="image" href="images/bg-tablet-landscape.png" media="(min-aspect-ratio: 0.81) and (max-aspect-ratio: 1.6) and (max-width: 1370px)">
+<link rel="preload" as="image" href="images/bg-mobile-landscape.png" media="(orientation: landscape) and (max-width: 960px) and (max-height: 500px)">
+
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="page-loader"></div>
+  <div class="mobile-header">
+    <img src="images/logo.png" class="logo logo-mobile" alt="logo">
+  </div>
+  <div class="credits-preview">
+    <img src="images/image1.jpg" class="v-img v1">
+    <img src="images/image2.jpg" class="v-img v2">
+  
+  <div class="credits-text credits-text-mobile">
+    Photography: first two images of clay sculpture<br> by Maria Beatriz Cunha
+  </div>
+  
+  <div class="credits-text credits-text-tablet">
+    Photography:<br> first two images of clay sculpture by Maria Beatriz Cunha
+  </div>
+</div>
+
+<div class="transition-zone"></div>
+  
+<img src="images/logo.png" class="logo logo-desktop" alt="logo">
+
+  <!-- CREDITS -->
+  <div class="credits" id="credits">
+    Photography: Maria Beatriz Cunha — first two images (clay sculpture)
+  </div>
+
+  <!-- MENU -->
+  <div class="menu" id="menu">
+    <div class="menu-icon">
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-item" onclick="window.location.href='mailto:anja.m.horrig@gmail.com'">
+        Get in touch
+      </div>
+      <div class="menu-item" onclick="toggleCredits()">Credits</div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="track" id="track">
+
+      <div class="set">
+        <img src="images/image1.jpg" class="img img1">
+        <img src="images/image2.jpg" class="img img2">
+        <img src="images/image3.jpg" class="img img3">
+        <img src="images/image4.jpg" class="img img4">
+        <img src="images/image5.jpg" class="img img5">
+        <img src="images/image6.jpg" class="img img6">
+        <img src="images/image7.jpg" class="img img7">
+        <img src="images/image8.jpg" class="img img8">
+        <img src="images/image9.jpg" class="img img9">
+      </div>
+
+      <div class="set">
+        <img src="images/image1.jpg" class="img img1">
+        <img src="images/image2.jpg" class="img img2">
+        <img src="images/image3.jpg" class="img img3">
+        <img src="images/image4.jpg" class="img img4">
+        <img src="images/image5.jpg" class="img img5">
+        <img src="images/image6.jpg" class="img img6">
+        <img src="images/image7.jpg" class="img img7">
+        <img src="images/image8.jpg" class="img img8">
+        <img src="images/image9.jpg" class="img img9">
+      </div>
+
+    </div>
+  </div>
+  <div class="mobile-marquee">
+    <div class="v-track">
+  
+      <!-- SET 1 -->
+      <div class="v-set">
+        <!-- ALL images in correct order -->
+        <img src="images/image1.jpg" class="v-img v1">
+        <img src="images/image2.jpg" class="v-img v2">
+        <img src="images/image4.jpg" class="v-img v3">
+        <img src="images/image3.jpg" class="v-img v4">
+        <img src="images/image5.jpg" class="v-img v5">
+        <img src="images/image6.jpg" class="v-img v6">
+        <img src="images/image7.jpg" class="v-img v7">
+        <img src="images/image8.jpg" class="v-img v8">
+        <img src="images/image9.jpg" class="v-img v9">
+      </div>
+  
+      <!-- SET 2 (IDENTICAL COPY) -->
+      <div class="v-set">
+        <img src="images/image1.jpg" class="v-img v1">
+        <img src="images/image2.jpg" class="v-img v2">
+        <img src="images/image4.jpg" class="v-img v3">
+        <img src="images/image3.jpg" class="v-img v4">
+        <img src="images/image5.jpg" class="v-img v5">
+        <img src="images/image6.jpg" class="v-img v6">
+        <img src="images/image7.jpg" class="v-img v7">
+        <img src="images/image8.jpg" class="v-img v8">
+        <img src="images/image9.jpg" class="v-img v9">
+      </div>
+  
+    </div>
+  </div>
+  <div class="transition-bottom"></div>
+  <!-- JS -->
+  <script>
+    const menu = document.getElementById("menu");
+    const menuPanel = document.getElementById("menuPanel");
+    const credits = document.getElementById("credits");
+    const body = document.body;
+    const track = document.getElementById("track");
+
+    let assetsReady = false;
+
+    function toggleCredits() {
+      body.classList.toggle("credits-mode");
+      credits.classList.toggle("active");
+    }
+    
+
+ 
+
+    // MENU hover open/close
+    menu.addEventListener("mouseenter", () => {
+      menuPanel.classList.add("open");
+    });
+
+    menu.addEventListener("mouseleave", () => {
+      menuPanel.classList.remove("open");
+    });
+
+    // click outside closes everything
+    document.addEventListener("click", (e) => {
+      const isMenu = e.target.closest(".menu");
+      const isCredits = e.target.closest(".credits");
+
+      if (!isMenu && !isCredits) {
+        menuPanel.classList.remove("open");
+        body.classList.remove("credits-mode");
+        credits.classList.remove("active");
+      }
+    });
+
+    // =========================
+    // IMAGE PRELOAD SYSTEM
+    // =========================
+
+    const imageSources = [
+      "images/image1.jpg",
+      "images/image2.jpg",
+      "images/image3.jpg",
+      "images/image4.jpg",
+      "images/image5.jpg",
+      "images/image6.jpg",
+      "images/image7.jpg",
+      "images/image8.jpg",
+      "images/image9.jpg"
+    ];
+
+    function preloadImages(sources, callback) {
+      let loaded = 0;
+
+      sources.forEach(src => {
+        const img = new Image();
+        img.src = src;
+
+        img.onload = () => {
+          loaded++;
+          if (loaded === sources.length) callback();
+        };
+      });
+    }
+
+    function startMarquee() {
+      const tracks = [
+        document.getElementById("track"),              // desktop
+        document.querySelector(".v-track")             // mobile
+      ];
+    
+      tracks.forEach(track => {
+        if (!track) return;
+    
+        track.style.transform = "translate(0, 0)";
+        
+        
+        
+      });
+    }
+
+    // =========================
+    // INIT SEQUENCE
+    // =========================
+
+    window.addEventListener("load", () => {
+      preloadImages(imageSources, () => {
+        startMarquee();
+    
+        // fade out loader AFTER everything is ready
+        const loader = document.querySelector(".page-loader");
+
+        if (loader) {
+          loader.style.opacity = "0";
+          loader.style.pointerEvents = "none";
+        }
+      });
+    });
+    
+  </script>
+
+</body>
+</html>
