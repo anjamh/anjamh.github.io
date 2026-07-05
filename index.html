@@ -192,38 +192,34 @@
     }
 
     function startMarquee() {
-      const tracks = [
-        document.getElementById("track"),              // desktop
-        document.querySelector(".v-track")             // mobile
-      ];
-    
-      tracks.forEach(track => {
-        if (!track) return;
-    
-        track.style.transform = "translate(0, 0)";
-        
-        
-        
-      });
-    }
+  const tracks = [
+    document.getElementById("track"),
+    document.querySelector(".v-track")
+  ];
 
-    // =========================
-    // INIT SEQUENCE
-    // =========================
+  tracks.forEach(track => {
+    if (!track) return;
+    track.style.animationPlayState = "running";
+  });
+}
 
-    window.addEventListener("load", () => {
-      preloadImages(imageSources, () => {
+// =========================
+// INIT SEQUENCE
+// =========================
+
+window.addEventListener("load", () => {
+  preloadImages(imageSources, () => {
+    const loader = document.querySelector(".page-loader");
+
+    if (loader) {
+      loader.style.opacity = "0";
+      loader.style.pointerEvents = "none";
+      setTimeout(() => {
         startMarquee();
-    
-        // fade out loader AFTER everything is ready
-        const loader = document.querySelector(".page-loader");
-
-        if (loader) {
-          loader.style.opacity = "0";
-          loader.style.pointerEvents = "none";
-        }
-      });
-    });
+      }, 600);
+    }
+  });
+});
     
   </script>
 
