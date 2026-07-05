@@ -109,7 +109,6 @@ body:not(.mobile) .credits-preview {
   align-items: flex-end;
   will-change: transform;
   animation: scroll 45s linear infinite;
-  animation-play-state: paused;
 }
 
 .set {
