@@ -191,7 +191,7 @@
       });
     }
 
-    function startMarquee() {
+function startMarquee() {
   const tracks = [
     document.getElementById("track"),
     document.querySelector(".v-track")
@@ -199,7 +199,7 @@
 
   tracks.forEach(track => {
     if (!track) return;
-    track.style.animationPlayState = "running";
+    track.style.transform = "translate(0, 0)";
   });
 }
 
